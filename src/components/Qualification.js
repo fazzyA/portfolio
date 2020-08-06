@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import { Link } from "gatsby"
 import { motion } from 'framer-motion';
 //make this page for qualfication n intro
@@ -43,7 +42,7 @@ const buttonVariants = {
   }
 }
 
-const Base = ({ addBase, pizza }) => {
+const Qualification = ({ addBase, pizza }) => {
   const bases = ['BCS', 'MCS', 'Learning never stops','Click me to know more'];
 
   return (
@@ -72,12 +71,12 @@ const Base = ({ addBase, pizza }) => {
         <motion.div className="next"
           variants={nextVariants}
         >
-          <Link to="/toppings">
+          <Link to="/projects">
             <motion.button
               variants={buttonVariants}
                whileHover="hover"
             >
-              Lets Go
+              See My Projects
             </motion.button>
           </Link>
         </motion.div>
@@ -86,4 +85,4 @@ const Base = ({ addBase, pizza }) => {
   )
 }
 
-export default Base;
+export default Qualification;

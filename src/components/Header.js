@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { Link } from "gatsby"
 import fb from './images/facebook.svg';
 import ld from './images/linkedin.svg';
 import arrow from './images/arrow.svg';

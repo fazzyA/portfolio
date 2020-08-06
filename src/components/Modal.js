@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { Link } from "gatsby"
 import { motion, AnimatePresence } from 'framer-motion';
 
 const backdrop = {

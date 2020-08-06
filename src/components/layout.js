@@ -3,6 +3,10 @@ import { Link } from 'gatsby'
 import base from './base.css'
 import Container from './container'
 import Navigation from './navigation'
+import Header from './Header'
+import Navbar from './Navbar'
+import Footer from './Footer'
+
 
 class Template extends React.Component {
   render() {
@@ -16,8 +20,10 @@ class Template extends React.Component {
 
     return (
       <Container>
-        <Navigation />
+        <Navbar />
+        {/* <Navigation /> */}
         {children}
+        <Footer />
       </Container>
     )
   }

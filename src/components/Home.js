@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { Link } from "gatsby"
 import { motion } from 'framer-motion';
 import Loader from './Loader';
 
@@ -38,7 +39,7 @@ const Home = () => {
       exit="exit"
     >
       <h2>Hi I am Faiza Aziz Khan</h2>
-      <Link to="/base">
+      <Link to="/qualification">
         <motion.button
           variants={buttonVariants}
           whileHover="hover"
