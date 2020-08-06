@@ -1,39 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
+// import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
 import Hero from '../components/hero'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
+import Header from '../components/Header';
+import Home from '../components/Home';
+import Base from '../components/Base';
+import Toppings from '../components/Toppings';
+import Order from '../components/Order';
+import Modal from '../components/Modal';
+import Contact from '../components/Contact';
+import { AnimatePresence } from 'framer-motion';
+import Projects from '../components/Project';
+import Navbar from '../components/Navbar';
 
-class RootIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const [author] = get(this, 'props.data.allContentfulPerson.edges')
+const RootIndex = (props) => {
+  const [pizza, setPizza] = useState({ base: "", toppings: [] });
+  const [showModal, setShowModal] = useState(false);
+  const siteTitle = props.data.site.siteMetadata.title;
 
     return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
+      <Layout location={props.location}>
+        <Navbar />
+          <Header />
+          <Modal showModal={showModal} />
+          <AnimatePresence exitBeforeEnter onExitComplete={() => setShowModal(false)}>
+            <Switch location={location} key={location.key}>
+              <Route path="/base">
+                <Base addBase={addBase} pizza={pizza} />
+              </Route>
+              <Route path="/order">
+                <Order pizza={pizza} setShowModal={setShowModal} />
+              </Route>
+              <Route path="/contact">
+                <Contact setShowModal={setShowModal}/>
+              </Route>
+              <Route path="/projects">
+                <Projects />
+              </Route>
+              <Route path="/" exact>
+                <Home />
+              </Route>
+            </Switch>
+          </AnimatePresence>
       </Layout>
     )
   }
-}
 
 export default RootIndex
 
@@ -44,48 +57,6 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
-      edges {
-        node {
-          title
-          slug
-          publishDate(formatString: "MMMM Do, YYYY")
-          tags
-          heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
-        }
-      }
-    }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-    ) {
-      edges {
-        node {
-          name
-          shortBio {
-            shortBio
-          }
-          title
-          heroImage: image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-        }
-      }
-    }
+
   }
 `
