@@ -211,4 +211,44 @@ li span.active::before{
 @media screen and (max-width: 600px) {
   .MuiTypography-h6{
     margin: 2px!important;
-  }}
+  }
+
+  .MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters {
+      display: block;
+      text-align: center;
+  }
+  
+  .MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters h6 {
+      display: inline-block;
+      margin-right: 25px !important;
+  }
+  .MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters h6 a img {
+      display: block;
+      margin: 0 auto;
+  }
+  
+  .MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters span.titleLeft {
+      float: none;
+      display: inline-block;
+      margin-top: 34px;
+  }
+  
+  .MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters span.titleLeft button span.MuiButton-label a {
+      border: 3px solid #fff;
+      background: #fff;
+      border-radius: 22px;
+  }
+  .MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters span.titleLeft button span.MuiButton-label a img.logosSmall {
+      width: 100%;
+      border-radius: 50px;
+      height: auto;
+  }
+  .MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters span.titleLeft {
+      float: none;
+      display: inline-block;
+      margin-top: 34px;
+  }
+  .MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters span.titleLeft button {
+      width: 35px;
+  }
+  }
