@@ -90,7 +90,7 @@ const Projects = () => {
 const projectList = data.allContentfulProjects.edges;
 console.log(projectList)
 
-    const classes = useStyles();
+    const projectClasses = useStyles();
 
     // const projectList = [{ title: 'project1' }, { title: 'project2' },
     // { title: 'project3' }, { title: 'project4' }]
@@ -107,10 +107,10 @@ console.log(data)
             {/* <div className='marginCenter'> */}
             {projectList.map(
                 (project) => (
-                    <Card className={classes.root}>
+                    <Card className={projectClasses.root}>
                         <CardActionArea>
                             <CardMedia
-                                className={classes.media}
+                                className={projectClasses.media}
                                 image={project.node.image.fluid.src}
                                 title={project.node.title}
                             />
